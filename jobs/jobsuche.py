@@ -11,7 +11,7 @@ import requests
 from config import JOBSUCHE_API_KEY
 from config import JOBSUCHE_URL
 from config import SEARCH_LOCATION
-
+from jobs.parser import JobParser
 from jobs.models import Job
 
 
@@ -58,7 +58,7 @@ class JobsucheClient:
         for item in data.get("ergebnisliste", []):
 
             jobs.append(
-                self._parse_job(item)
+                JobParser.parse(item)
             )
 
         return jobs
