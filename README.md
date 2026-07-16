@@ -1,8 +1,8 @@
-# AI Job Agent 🚀
+# AI Job Agent 
 
 An AI-powered job search assistant that automatically searches the German **Jobsuche (Bundesagentur für Arbeit)** portal, evaluates job postings against your CV using LLMs, and helps you find the best opportunities.
 
-> **Status:** 🚧 Work in Progress
+> **Status:** Work in Progress
 
 ---
 
