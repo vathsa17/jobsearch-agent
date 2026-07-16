@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.pyc
+
+# Environment
+.env
+
+# Database
+data/jobs.db
+
+# Logs
+logs/
+
+# Reports
+reports/*.html
+
+# VSCode
+.vscode/
+
+# PyCharm
+.idea/
+
+# macOS
+.DS_Store
+
+# Virtual Environment
+.venv/
+venv/
+
+# Test cache
+.pytest_cache/
+
+# Coverage
+.coverage
+htmlcov/

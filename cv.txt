@@ -1,0 +1,121 @@
+Anusha Bevinje
+anusha.bevinje@gmail.com
+ 
++491752878177
+ 
+anusha-bevinje
+ 
+Ingolstadt, Deutschland
+ 
+German National Visa
+ 
+Summary
+Senior Salesforce Developer/Architect with 10+ years of experience designing and delivering enterprise CRM
+solutions across Sales Cloud, Service Cloud, and Experience Cloud. Brings hands-on technical depth together while
+partnering with business stakeholders to drive CRM strategy, release governance, platform adoption, and long-term
+Salesforce evolution.
+Certificates
+Salesforce Certified Administrator (SCA)
+Salesforce Certified Advanced Developer
+Salesforce Certified Platform Developer I & II
+Salesforce Certified Platform App Builder
+Work Experience
+08/2022 – 06/2026
+Munich, Germany
+Senior Salesforce Administrator
+JSMD Group
+•Owned end-to-end Salesforce platform architecture for Sales & Service Cloud,
+including solution design, integrations, automation, and security.
+•Built Salesforce Experience Cloud portals from the ground up, enabling secure self-
+service for external business customers.
+•Designed secure REST/SOAP integrations between Salesforce, SAP, and other
+enterprise systems. Developed custom solutions using Apex, Lightning Web
+Components, and Flows.
+•Led technical solution design for Sales and Service Cloud, translating business
+requirements into scalable Salesforce architectures.
+•Defined Salesforce architecture standards, development best practices, and release
+governance to ensure scalability and maintainability.
+•Managed deployments using Salesforce DX, Git, and Agile practices. Evaluated new
+platform capabilities and advised stakeholders on Salesforce adoption strategy.
+08/2021 – 08/2022
+Munich, Deutschland
+Salesforce Application Consultant
+Google
+•Served as Salesforce Solution Architect for the Material Design CRM platform, owning
+end-to-end technical architecture and solution design.
+•Owned Tableau CRM (now CRM Analytics) end-to-end for leadership reporting —
+building datasets, dataflows, and dashboards to track pipeline health, conversion
+metrics, Material Design adoption, and OKR performance.
+•Defined the platform's data model, security model, and automation strategy to
+support scalable, long-term application architecture.
+•Developed Apex and Lightning Web Components to support complex business
+processes beyond declarative configuration.
+1 / 2
+
+•Partnered with business stakeholders to prioritize enhancements and drive CRM
+adoption across the organization.
+07/2018 – 05/2021
+Bangalore, India
+Salesforce Enterprise Application Engineer
+GE Corporate
+•Served as key developer/administrator, leading solution delivery from requirements
+discovery through architecture, implementation, testing, deployment, and support.
+•Optimized Salesforce license costs across business units by designing and 
+implementing a centralized license management tool using SOAP integrations, 
+delivered within a 2-month timeline.
+•Revamped the case management system for multiple customer groups covering use 
+case design, testing, and deployment  to deliver a improved user experience.
+•Built Lightning (Aura) components to bridge classic and Lightning environments, 
+improving customer engagement and platform usability.
+•Built analytics functionality in Einstein Analytics, including requirements gathering, 
+datasets, recipes, and dashboards to support reporting and business insights.
+•Executed a proof-of-concept for automated NDA document generation and 
+management using the Conga Collaborate tool.
+01/2015 – 06/2018
+Bangalore, India
+CRM Systems Engineer
+Tata Consultancy Services
+Began career with foundational training in Java, followed by hands-on experience on the
+Siebel CRM platform before transitioning to Salesforce as the system was migrated.
+•Developed Apex classes and Visualforce pages to deliver custom functionality 
+supporting new business requirements.
+•Leveraged Apex and SOQL/SOSL/DML to build flexible, metadata-driven automation.
+Skills
+Salesforce
+•Sales, Service, Experience Cloud
+•Flows
+•Lightning Web Components
+•Apex Classes & Triggers
+•REST/SOAP APIs
+•SOQL/SOSL/DML
+•CRM Analytics (Tableau)
+Architecture
+•Solution Design
+•Technical Documentation
+•Stakeholder Management
+•System Integration
+•Performance Optimization
+•Platform Security
+•Data Modeling
+DevOps
+•Git
+•Salesforce DX
+•VS Code
+•CI/CD exposure
+Tools
+Visual Studio Code (CI/CD)
+Git
+Conga Composer
+Data Loader
+Jira (Agile/Scrum)
+Postman API
+Education
+09/2010 – 07/2014
+Mysore, India
+Bachelor of Engineering in Electronics and Communication Engineering
+The National Institute of Engineering
+Languages
+English
+German (B1)  currently 
+advancing
+2 / 2
