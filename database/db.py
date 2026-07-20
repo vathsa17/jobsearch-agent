@@ -2,11 +2,12 @@
 SQLite database helper.
 """
 
+import json
 import sqlite3
 
 from config import DATABASE_FILE
 from jobs.models import Job
-import json
+
 
 class Database:
 
@@ -16,6 +17,9 @@ class Database:
 
         self.connection.row_factory = sqlite3.Row
 
+        # Enable foreign key support
+        self.connection.execute("PRAGMA foreign_keys = ON")
+
         self.create_tables()
 
     # -------------------------------------------------
@@ -24,6 +28,30 @@ class Database:
 
         cursor = self.connection.cursor()
 
+        # Jobs table
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS jobs (
+
+                reference TEXT PRIMARY KEY,
+
+                title TEXT NOT NULL,
+
+                company TEXT,
+
+                location TEXT,
+
+                profession TEXT,
+
+                salary TEXT,
+
+                remote INTEGER,
+
+                url TEXT
+
+            )
+        """)
+
+        # AI match results
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS job_matches (
 
@@ -53,7 +81,7 @@ class Database:
                     REFERENCES jobs(reference)
 
             )
-            """)
+        """)
 
         self.connection.commit()
 
@@ -87,7 +115,7 @@ class Database:
                 job.salary,
                 int(job.remote),
                 job.url,
-            )
+            ),
         )
 
         self.connection.commit()
@@ -96,80 +124,23 @@ class Database:
 
     # -------------------------------------------------
 
-    def get_all_jobs(self):
-
-        cursor = self.connection.cursor()
-
-        cursor.execute(
-            """
-            SELECT *
-            FROM jobs
-            ORDER BY company
-            """
-        )
-
-        return cursor.fetchall()
-
-    # -------------------------------------------------
-
-    def job_exists(self, reference):
-
-        cursor = self.connection.cursor()
-
-        cursor.execute(
-            """
-            SELECT 1
-            FROM jobs
-            WHERE reference = ?
-            """,
-            (reference,)
-        )
-
-        return cursor.fetchone() is not None
-
-    # -------------------------------------------------
-
-    def close(self):
-
-        self.connection.close()
-    # -------------------------------------------------
-
-    def get_new_jobs(self, jobs: list[Job]) -> list[Job]:
-
-        """
-        Returns only jobs that do not already exist in the database.
-        """
-
-        new_jobs = []
-
-        for job in jobs:
-
-            if not self.job_exists(job.reference):
-                new_jobs.append(job)
-
-        return new_jobs
-    # -------------------------------------------------
-
     def insert_jobs(self, jobs: list[Job]):
 
         cursor = self.connection.cursor()
 
-        rows = []
-
-        for job in jobs:
-
-            rows.append(
-                (
-                    job.reference,
-                    job.title,
-                    job.company,
-                    job.location,
-                    job.profession,
-                    job.salary,
-                    int(job.remote),
-                    job.url,
-                )
+        rows = [
+            (
+                job.reference,
+                job.title,
+                job.company,
+                job.location,
+                job.profession,
+                job.salary,
+                int(job.remote),
+                job.url,
             )
+            for job in jobs
+        ]
 
         cursor.executemany(
             """
@@ -190,6 +161,59 @@ class Database:
         )
 
         self.connection.commit()
+
+    # -------------------------------------------------
+
+    def get_all_jobs(self):
+
+        cursor = self.connection.cursor()
+
+        cursor.execute(
+            """
+            SELECT *
+            FROM jobs
+            ORDER BY company
+            """
+        )
+
+        return cursor.fetchall()
+
+    # -------------------------------------------------
+
+    def job_exists(self, reference: str) -> bool:
+
+        cursor = self.connection.cursor()
+
+        cursor.execute(
+            """
+            SELECT 1
+            FROM jobs
+            WHERE reference = ?
+            """,
+            (reference,),
+        )
+
+        return cursor.fetchone() is not None
+
+    # -------------------------------------------------
+
+    def get_new_jobs(self, jobs: list[Job]) -> list[Job]:
+
+        """
+        Returns only jobs that do not already exist in the database.
+        """
+
+        new_jobs = []
+
+        for job in jobs:
+
+            if not self.job_exists(job.reference):
+                new_jobs.append(job)
+
+        return new_jobs
+
+    # -------------------------------------------------
+
     def save_match(self, reference: str, match):
 
         cursor = self.connection.cursor()
@@ -222,7 +246,13 @@ class Database:
                 match.estimated_interview_difficulty,
                 json.dumps(match.preparation_topics),
                 match.estimated_preparation_hours,
-            )
+            ),
         )
 
         self.connection.commit()
+
+    # -------------------------------------------------
+
+    def close(self):
+
+        self.connection.close()

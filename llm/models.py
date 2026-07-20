@@ -3,6 +3,14 @@ Models used by the LLM layer.
 """
 
 from dataclasses import dataclass, field
+from enum import Enum
+
+
+class Recommendation(Enum):
+    APPLY = "APPLY"
+    MAYBE = "MAYBE"
+    SKIP = "SKIP"
+
 
 
 @dataclass

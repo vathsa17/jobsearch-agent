@@ -7,7 +7,7 @@ from jobs.filter import is_relevant
 from jobs.jobsuche import JobsucheClient
 from config import SEARCH_TERMS
 from utils.logger import setup_logger
-
+from llm.matcher import JobMatcher
 
 class JobAgent:
 
@@ -18,6 +18,10 @@ class JobAgent:
         self.db = Database()
 
         self.client = JobsucheClient()
+
+        self.matcher = JobMatcher()
+        with open("cv/cv.txt", encoding="utf-8") as f:
+            self.cv = f.read()
 
     # -------------------------------------------------------
 
@@ -35,7 +39,7 @@ class JobAgent:
         )
 
         self.save_jobs(new_jobs)
-
+        self.match_jobs(new_jobs)  
         self.print_summary(new_jobs)
 
     # -------------------------------------------------------
@@ -106,3 +110,10 @@ class JobAgent:
             "Total relevant jobs: %d",
             len(jobs),
         )
+    def match_jobs(self, jobs):
+
+        for job in jobs:
+
+            match = self.matcher.match(job, self.cv)
+
+            self.db.save_match(job.reference, match)

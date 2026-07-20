@@ -107,5 +107,14 @@ class LLMClient:
             )
 
         logger.info("LLM response received.")
+        print("========== RAW LLM RESPONSE ==========")
+        print(result)
+        print("======================================")
 
-        return json.loads(result)
+        try:
+            return json.loads(result)
+
+        except json.JSONDecodeError:
+            logger.error("Invalid JSON returned by the LLM:")
+            logger.error(result)
+            raise
